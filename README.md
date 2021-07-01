@@ -25,14 +25,14 @@ python string_comparison.py
 If you use the algorithm or code, please cite them as follows:
 ```bibtex
 @article{khan2021string,
-  author={Mushahid Khan and Andriy Miranskyy},
-  title={{String Comparison on a Quantum Computer Using Hamming Distance}},
-  journal   = {CoRR},
-  volume    = {abs/2106.16173},
-  year      = {2021},
+  author        = {Mushahid Khan and Andriy Miranskyy},
+  title         = {{String Comparison on a Quantum Computer Using Hamming Distance}},
+  journal       = {CoRR},
+  volume        = {abs/2106.16173},
+  year          = {2021},
   archivePrefix = {arXiv},
-  url       = {https://arxiv.org/abs/2106.16173},
-  eprint={2106.16173}
+  url           = {https://arxiv.org/abs/2106.16173},
+  eprint        = {2106.16173}
 }
 ```
 
