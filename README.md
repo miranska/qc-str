@@ -20,6 +20,10 @@ For additional examples (containing invocations of the debug-related methods), r
 ```bash
 python string_comparison.py
 ```
+To execute code listings shown in the [preprint](https://arxiv.org/abs/2106.16173), do
+```bash
+python hd_paper_listings.py
+```
 
 ## Citation
 If you use the algorithm or code, please cite them as follows:
