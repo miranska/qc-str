@@ -4,6 +4,13 @@ from string_comparison import StringComparator
 
 
 class StringComparatorTestCase(unittest.TestCase):
+    def test_one_char_symbol_p_pqm(self):
+        dataset = ['01001', '11010', '01110', '10110']
+        x = StringComparator('10110', dataset, p_pqm=True, shots=20000)
+        actual_hd = x.run()['hamming_distances']
+        expected_hd = [5, 2, 2, 0]
+        self.assertEqual(expected_hd, actual_hd, 'incorrect hamming distance')
+
     def test_one_char_symbol(self):
         dataset = ['01001', '11010', '01110', '10110']
         x = StringComparator('10110', dataset, symbol_length=1)
@@ -53,6 +60,26 @@ class StringComparatorTestCase(unittest.TestCase):
         actual_hd = x.run()['hamming_distances']
         expected_hd = [2, 2, 2, 2, 2, 2]
         self.assertEqual(expected_hd, actual_hd, 'incorrect hamming distance')
+
+    def test_default_database(self):
+        dataset = ['000', '010', '100', '111', '001', '101', '110', '011']
+        x = StringComparator('100', dataset, symbol_length=1, default_dataset=True)
+        actual_hd = x.run()['hamming_distances']
+        expected_hd = [1, 2, 0, 2, 2, 1, 1, 3]
+        self.assertEqual(expected_hd, actual_hd, 'incorrect hamming distance')
+
+    def test_dictionary_override(self):
+        dataset = [['a', 'b'], ['a', 'c']]
+        x = StringComparator(['a', 'b'], dataset, is_binary=False)
+        self.assertEqual(x.symbol_length, 2, 'incorrect symbol length')
+        self.assertEqual(len(x.target_string), 4, 'incorrect target string length')
+        self.assertEqual(len(x.string_db[0]), 4, 'incorrect db string length')
+
+        x = StringComparator(['a', 'b'], dataset, is_binary=False, symbol_count=5)
+        self.assertEqual(x.symbol_length, 3, 'incorrect symbol length')
+        self.assertEqual(len(x.target_string), 6, 'incorrect target string length')
+        self.assertEqual(len(x.string_db[0]), 6, 'incorrect db string length')
+
 
 if __name__ == '__main__':
     unittest.main()
